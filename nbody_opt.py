@@ -58,10 +58,6 @@ def update_vs(v1, v2, dt, dx, dy, dz, m1, m2):
     v2[1] += dy * b2
     v2[2] += dz * b2
 
-# def update_rs(r, dt, vx, vy, vz):
-#     r[0] += dt * vx
-#     r[1] += dt * vy
-#     r[2] += dt * vz
 
 def advance(dt):
     '''
