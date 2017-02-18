@@ -63,15 +63,6 @@ def advance(dt):
     '''
         advance the system one timestep
     '''
-    #seenit = []
-    # for body1 in BODIES.keys():
-    #     for body2 in BODIES.keys():
-    #         if (body1 != body2) and not (body2 in seenit):
-    #             ([x1, y1, z1], v1, m1) = BODIES[body1]
-    #             ([x2, y2, z2], v2, m2) = BODIES[body2]
-    #             (dx, dy, dz) = compute_deltas(x1, x2, y1, y2, z1, z2)
-    #             update_vs(v1, v2, dt, dx, dy, dz, m1, m2)
-    #             seenit.append(body1)
 
     for body1, body2 in body_pair:
         ([x1, y1, z1], v1, m1) = BODIES[body1]
@@ -99,15 +90,7 @@ def report_energy(e=0.0):
     '''
         compute the energy and return it so that it can be printed
     '''
-    # seenit = []
-    # for body1 in BODIES.keys():
-    #     for body2 in BODIES.keys():
-    #         if (body1 != body2) and not (body2 in seenit):
-    #             ((x1, y1, z1), v1, m1) = BODIES[body1]
-    #             ((x2, y2, z2), v2, m2) = BODIES[body2]
-    #             (dx, dy, dz) = compute_deltas(x1, x2, y1, y2, z1, z2)
-    #             e -= compute_energy(m1, m2, dx, dy, dz)
-    #             seenit.append(body1)
+
     for body1, body2 in body_pair:
         ([x1, y1, z1], v1, m1) = BODIES[body1]
         ([x2, y2, z2], v2, m2) = BODIES[body2]
