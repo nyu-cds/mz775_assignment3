@@ -81,7 +81,7 @@ def advance(dt):
         ([x1, y1, z1], v1, m1) = BODIES[body1]
         ([x2, y2, z2], v2, m2) = BODIES[body2]
         (dx, dy, dz) = (x1-x2, y1-y2, z1-z2)
-        #update_vs(v1, v2, dt, dx, dy, dz, m1, m2)
+        # replace update_vs, reduce function call overhead
         b1 = m2 * (dt * ((dx * dx + dy * dy + dz * dz) ** (-1.5)))
         b2 = m1 * (dt * ((dx * dx + dy * dy + dz * dz) ** (-1.5)))
         v1[0] -= dx * b1
@@ -94,7 +94,7 @@ def advance(dt):
     keys = BODIES.keys()
     for body in keys:
         (r, [vx, vy, vz], m) = BODIES[body]
-        #update_rs(r, dt, vx, vy, vz)
+        # replace update_vs, reduce function call overhead
         r[0] += dt * vx
         r[1] += dt * vy
         r[2] += dt * vz
@@ -115,9 +115,9 @@ def report_energy(e=0.0):
     for body1, body2 in body_pair:
         ([x1, y1, z1], v1, m1) = BODIES[body1]
         ([x2, y2, z2], v2, m2) = BODIES[body2]
-        #(dx, dy, dz) = compute_deltas(x1, x2, y1, y2, z1, z2)
+        # replace compute_delta, reduce function call overhead
         (dx, dy, dz) = (x1-x2, y1-y2, z1-z2)
-        #e -= compute_energy(m1, m2, dx, dy, dz)
+        # replace compute_energy, reduce function call overhead
         e -= (m1 * m2) / ((dx * dx + dy * dy + dz * dz) ** 0.5)
     keys = BODIES.keys()
     for body in keys:
